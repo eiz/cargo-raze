@@ -6,11 +6,7 @@ filegroup(
 )
 
 _CACHE_ENTRIES = {
-    "BUILD_EXAMPLES": "off",
-    "BUILD_SHARED_LIBS": "off",
-    "BUILD_TESTING": "off",
     "CMAKE_FIND_DEBUG_MODE": "on",
-    "CMAKE_PREFIX_PATH": "$EXT_BUILD_DEPS/libressl",
 }
 
 _LINUX_CACHE_ENTRIES = dict(_CACHE_ENTRIES.items() + {
@@ -18,16 +14,22 @@ _LINUX_CACHE_ENTRIES = dict(_CACHE_ENTRIES.items() + {
 }.items())
 
 cmake(
-    name = "libssh2",
+    name = "libressl",
     cache_entries = select({
         "@rules_rust//rust/platform:linux": _LINUX_CACHE_ENTRIES,
         "//conditions:default": _CACHE_ENTRIES,
     }),
     lib_source = "//:all",
     out_static_libs = select({
-        "@rules_rust//rust/platform:windows": ["libssh2.lib"],
-        "//conditions:default": ["libssh2.a"],
+        "@rules_rust//rust/platform:windows": ["ssl-50.lib", "crypto-47.lib", "tls-22.lib"],
+        "//conditions:default": ["libssl.a", "libcrypto.a"],
     }),
     visibility = ["//visibility:public"],
-    deps = ["@cargo_raze__libressl//:libressl"],
+)
+
+filegroup(
+    name = "gen_dir",
+    srcs = [":libressl"],
+    output_group = "gen_dir",
+    visibility = ["//visibility:public"]
 )

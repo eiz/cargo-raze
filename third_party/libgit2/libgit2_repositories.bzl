@@ -10,6 +10,12 @@ def libgit2_repositories():
         urls = [
             "https://github.com/libgit2/libgit2/releases/download/v1.1.0/libgit2-1.1.0.tar.gz",
         ],
+        patches = [
+            Label("//third_party/libgit2:0001-fix-win32-search-for-libssh2.patch"),
+        ],
+        patch_args = [
+            "-p1",
+        ],
         type = "tar.gz",
         sha256 = "ad73f845965cfd528e70f654e428073121a3fa0dc23caac81a1b1300277d4dba",
         strip_prefix = "libgit2-1.1.0",

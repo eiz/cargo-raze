@@ -7,7 +7,7 @@ load("//third_party/curl:curl_repositories.bzl", "curl_repositories")
 load("//third_party/iconv:iconv_repositories.bzl", "iconv_repositories")
 load("//third_party/libgit2:libgit2_repositories.bzl", "libgit2_repositories")
 load("//third_party/libssh2:libssh2_repositories.bzl", "libssh2_repositories")
-load("//third_party/openssl:openssl_repositories.bzl", "openssl_repositories")
+load("//third_party/libressl:libressl_repositories.bzl", "libressl_repositories")
 load("//third_party/pcre:pcre_repositories.bzl", "pcre_repositories")
 load("//third_party/zlib:zlib_repositories.bzl", "zlib_repositories")
 
@@ -44,7 +44,7 @@ def cargo_raze_repositories():
     iconv_repositories()
     libgit2_repositories()
     libssh2_repositories()
-    openssl_repositories()
+    libressl_repositories()
     pcre_repositories()
     zlib_repositories()
 

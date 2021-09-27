@@ -50,6 +50,10 @@ rust_library(
     edition = "2018",
     rustc_flags = [
         "--cap-lints=allow",
+        "-lwinhttp",
+        "-lrpcrt4",
+        "-lole32",
+        "-lcrypt32",
     ],
     tags = [
         "cargo-raze",

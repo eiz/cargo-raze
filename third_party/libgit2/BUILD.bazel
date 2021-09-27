@@ -1,6 +1,7 @@
 exports_files(
     [
         "BUILD.libgit2.bazel",
+        "0001-fix-win32-search-for-libssh2.patch",
     ],
     visibility = ["//visibility:public"],
 )

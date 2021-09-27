@@ -13,7 +13,8 @@ _CACHE_ENTRIES = {
     "BUILD_EXAMPLES": "off",
     "BUILD_FUZZERS": "off",
     "BUILD_SHARED_LIBS": "off",
-    "CMAKE_PREFIX_PATH": "$EXT_BUILD_DEPS/pcre;$EXT_BUILD_DEPS/openssl;$EXT_BUILD_DEPS/libssh2;$EXT_BUILD_DEPS/zlib",
+    "CMAKE_FIND_DEBUG_MODE": "true",
+    "CMAKE_PREFIX_PATH": "$EXT_BUILD_DEPS/pcre;$EXT_BUILD_DEPS/libressl;$EXT_BUILD_DEPS/libssh2;$EXT_BUILD_DEPS/zlib",
     "EMBED_SSH_PATH": "$(execpath @cargo_raze__libssh2//:libssh2)",
     "USE_HTTPS": "on",
 }
@@ -38,7 +39,7 @@ cmake(
     visibility = ["//visibility:public"],
     deps = [
         "@cargo_raze__libssh2//:libssh2",
-        "@cargo_raze__openssl//:openssl",
+        "@cargo_raze__libressl//:libressl",
         "@cargo_raze__zlib//:zlib",
     ] + select({
         "@rules_rust//rust/platform:darwin": ["@cargo_raze__iconv//:iconv"],
